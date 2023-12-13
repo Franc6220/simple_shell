@@ -4,6 +4,7 @@
  * main - Entry point
  * int: variable declaration
  * Description: program to print numbers less than 15
+ *
  * Return: Zero
  */
 int main(void)
