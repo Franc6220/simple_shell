@@ -3,7 +3,6 @@
 /**
  * main - Entry point
  * Description: Program to illustrate operators in C
- * 
  *
  * Return: Always 0
  */
