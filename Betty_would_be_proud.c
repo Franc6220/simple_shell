@@ -1,5 +1,5 @@
 #include <stdio.h>
-#include <unistd.h>
+
 /**
  * main - Entry point
  * Description: Program to illustrate operators in C
