@@ -1,20 +1,17 @@
 #include <stdio.h>
 
 /**
- * main - Entry point
- * Description: Program to illustrate operators in C
- *
- * Return: Always 0
+ * main - Entry point 
+ * int: variable declaration
+ * Description: program to print numbers less than 15
+ * Return: Zero 
  */
 int main(void)
 {
-int a = 20, b = 15, c, d, e = 10;
-c = a++;
-d = a;
-printf("%d\n", a < b > c == d);
-printf("%d\n", a == c);
-printf("%d\n", !(d < e));
-printf("%d\n", e > d && c <= a);
-printf("%d\n", a);
+int i;
+for (i = 0; i > 10 && i < 15; i++)
+{
+printf("i = %d", i);
+}
 return (0);
 }
