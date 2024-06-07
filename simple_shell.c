@@ -32,7 +32,14 @@ int main(void)
         args = split_line(line);
         if (args[0] != NULL)
         {
-            execute_command(args);
+            if (strcmp(args[0], "exit") == 0) /* Handle exit command */
+            {
+                status = 0;
+            }
+            else
+            {
+                execute_command(args);
+            }
         }
 
         free(line);
