@@ -9,11 +9,14 @@
 #define MAX_INPUT 1024
 #define PROMPT "($) "
 
+extern char **environ;
+
 void display_prompt(void);
 char *read_line(void);
 char **split_line(char *line);
 void execute_command(char **args);
 char *find_command_in_path(char *command);
+void print_env(void);
 
 /**
  * main - Entry point of the simple shell
@@ -43,6 +46,10 @@ int main(void)
 				free(line);
 				free(args);
 				exit(0);
+			}
+			else if (strcmp(args[0], "env") == 0) /* Handle env command */
+			{
+				print_env();
 			}
 			else
 			{
@@ -151,7 +158,7 @@ void execute_command(char **args)
 	if (pid == 0)
 	{
 		/* Child process */
-		if (execve(command_path, args, NULL) == -1)
+		if (execve(command_path, args, environ) == -1)
 		{
 			perror("simple_shell");
 		}
@@ -225,5 +232,19 @@ char *find_command_in_path(char *command)
 	}
 	free(path_copy);
 	return (NULL);
+}
+
+/**
+ * print_env - Prints the current environment variables
+ */
+void print_env(void)
+{
+	char **env = environ;
+
+	while (*env)
+	{
+		printf("%s\n", *env);
+		env++;
+	}
 }
 
