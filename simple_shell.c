@@ -68,6 +68,7 @@ int main(void)
 void display_prompt(void)
 {
 	printf("%s", PROMPT);
+	fflush(stdout); /* Ensure prompt is displayed immediately */
 }
 
 /**
@@ -79,6 +80,7 @@ char *read_line(void)
 {
 	char *line = NULL;
 	size_t bufsize = 0; /* size_t for getline */
+	size_t len;
 
 	if (getline(&line, &bufsize, stdin) == -1)
 	{
@@ -93,6 +95,16 @@ char *read_line(void)
 			exit(EXIT_FAILURE);
 		}
 	}
+
+	/* Remove the prompt characters */
+	if (strstr(line, PROMPT) == line)
+		line += strlen(PROMPT);
+
+	/* Remove newline character if present */
+	len = strlen(line);
+	if (len > 0 && line[len - 1] == '\n')
+		line[len - 1] = '\0';
+
 	return (line);
 }
 
